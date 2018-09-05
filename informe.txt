@@ -1,0 +1,24 @@
+Integrantes:
+			- Marcela Rivera
+			- Ariel Undurraga
+			- Javier Vásquez
+Profesor: Pablo Reyes
+Ayudante: Tomás Child
+
+Laboratorio 3 Sistemas de comunicación.
+
+Desarrollo:
+			
+			El presente laboratorio consiste en crear un programa que permita encriptar y desencriptar mensajes de cualquier tamaño, haciendo uso de los distintos métodos de encriptamiento existente junto con MAC.
+
+			Palabras claves: Encriptamiento Simétrico, Llave, Desencriptamiento, THE VIGENÈRE CIPHER, Cifrador César, HASH SHA-1, MAC. 
+
+
+			¿Qué es un MAC?
+							Conocido como código de Autentificación de Mensajes. Es generado por un algoritmo que crea un bloque de tamaño fijo pequeño que depende del mensaje y alguna clave. Se utiliza agregando al mensaje encriptado como una firma con el fin de que el receptos realice el mismo cálculo y verifique si calza con el MAC. Provee la seguridad de que el mensaje no se ha alterado y viene del emisor. (Rosa)
+
+
+			Descripción del código.
+
+			El código empleado combina el método de encriptamiento THE VIGENÈRE CIPHER con un algoritmo de elaboración propia (genera la llave en tiempo de ejecución y aplica X0R entre mensaje y clave). No obstante, se ha implementado un último cambio, el cual consiste en generar un MAC que permita hacer más seguro el sistema de encriptamiento y desencriptamiento, esto debido a que provee integridad y autenticidad. El MAC combinado con el método de encriptamiento mencionado previamente funciona de la siguiente manera:
+				
