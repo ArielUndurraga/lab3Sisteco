@@ -213,8 +213,8 @@ def cbc_encrypt(message):
 def cbc_desencrypt(message, key):
     blocksArray = []
     
-    mac = message[-32:len(message)]
-    print "Se extrae MAC igual a: " + mac
+    macIni = message[-32:len(message)]
+    print "Se extrae MAC del mensaje cifrado igual a: " + macIni
 
     message = message[:-32]
     lengthMsg = len(message)
@@ -230,13 +230,21 @@ def cbc_desencrypt(message, key):
     decryptedMessage = ""
     decryptedMessage += decryptMessage(key, blocksArray[0])
     encryptedBlock = blocksArray[0]
-    print(decryptedMessage)
+
     for block in blocksArray[1:]:
         decryptedBlock = decryptMessage(key, block)
 
         xorResult = myCypher(decryptedBlock, encryptedBlock)
         encryptedBlock = block
         decryptedMessage+=xorResult
+
+    macMsj = genMac(encryptedBlock)
+    print "El MAC del mensaje es: "+macMsj
+
+    if(macIni == macMsj):
+        print "El MAC del mensaje recibido y el MAC generado con el mensaje coinciden"
+    else:
+        print "El MAC del mensaje cifrado y el MAC generado con el mensaje original son diferentes"
 
     return decryptedMessage
 

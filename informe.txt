@@ -20,4 +20,7 @@ Desarrollo:
 
 			Descripción del código.
 
-			El código empleado combina el método de encriptamiento THE VIGENÈRE CIPHER con un algoritmo de elaboración propia (genera la llave en tiempo de ejecución y aplica X0R entre mensaje y clave). No obstante, se ha implementado un último cambio, el cual consiste en generar un MAC que permita hacer más seguro el sistema de encriptamiento y desencriptamiento, esto debido a que provee integridad y autenticidad. El MAC combinado con el método de encriptamiento mencionado previamente funciona de la siguiente manera:
+			El código empleado combina el método de encriptamiento THE VIGENÈRE CIPHER con un algoritmo de elaboración propia (genera la llave en tiempo de ejecución y aplica X0R entre mensaje y clave). No obstante, se ha implementado un último cambio, el cual consiste en generar un MAC que permita hacer más seguro el sistema de encriptamiento y desencriptamiento, esto debido a que provee integridad y autenticidad.
+
+			Se utilizó una operación de cifrado tipo CBC, en la cual el mensaje original se divide en bloques de 64 caracteres, los cuales son cifrados utilizando el algoritmo de encriptación del la 
+			experiencia pasada. Además, antes de hacer el cifrado se hace una operación XOR entre el bloque correspondiente y el mensaje cifrado del bloque anterior, llegando el resultado de esta operación como entrada al algoritmo de encriptación en vez de el mensaje original bruto. Sin embargo, dicha operación se ejecuta solo desde el segundo bloque en adelante, siendo los primeros 64 caracteres del bloque cifrados tal cual. Finalmente con todos los bloques cifrados, se concatenan entre sí y se adhiere al final el MAC, el cual es generado utilizando los primeros 32 caracteres del último bloque cifrado.
